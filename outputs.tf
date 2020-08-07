@@ -15,3 +15,7 @@ output "ssh_to_master" {
   description = "ssh to primary master node"
   value       = "ssh -i ${var.ssh_private_key_path} -J opc@${module.base.bastion_public_ip} opc@${module.master.master_vip}"
 }
+
+output "loadbalancer_addresses" {
+  value = "NGINX Loadbalancer: ${module.loadbalancer.nginx_lb_ip} || Istio Loadbalancer: ${module.loadbalancer.istio_lb_ip}"
+}

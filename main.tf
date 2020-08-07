@@ -89,7 +89,8 @@ module "worker" {
   timezone            = var.worker_timezone
 
   # olcne public load balancer to attach to worker pool
-  oci_loadbalancer_id = module.loadbalancer.pub_lb_id
+  nginx_oci_loadbalancer_id = module.loadbalancer.nginx_lb_id
+  istio_oci_loadbalancer_id = module.loadbalancer.istio_lb_id
 }
 
 module "loadbalancer" {
@@ -147,5 +148,5 @@ module "olcne" {
 
   helm_version = var.helm_version
 
-  loadbalancer_ip_address = module.loadbalancer.pub_lb_ip
+  loadbalancer_ip_address = module.loadbalancer.nginx_lb_ip
 }

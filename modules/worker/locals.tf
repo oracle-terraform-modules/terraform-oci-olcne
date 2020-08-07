@@ -24,5 +24,10 @@ locals {
     vnic.private_ip_address
   ]
 
-  ingress_ports = [30080, 30443]
+  ingress = [
+    { loadbalancer = var.nginx_oci_loadbalancer_id, port = 30080},
+    { loadbalancer = var.nginx_oci_loadbalancer_id, port = 30443},
+    { loadbalancer = var.istio_oci_loadbalancer_id, port = 31380},
+    { loadbalancer = var.istio_oci_loadbalancer_id, port = 31390}
+  ]
 }
